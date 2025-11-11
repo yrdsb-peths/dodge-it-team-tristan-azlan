@@ -3,16 +3,29 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class Bomb extends Actor
 {
-    /**
-     * Act - do whatever the Bomb wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
+    int livesNum = 3;
+    
     public void act()
     {
         move(-10);
         
         if(getX() <= 0) {
             resetBomb();
+        }
+        
+        if(isTouching(Hero.class)){
+            livesNum -= 1;
+            resetBomb();
+        }
+        
+        if(isTouching(Hero.class)){
+            livesNum -= 1;
+        }
+        
+        if(livesNum == 0){
+            GameOver gameOver = new GameOver();
+            getWorld().addObject(gameOver, 300, 200);
+            getWorld().removeObject(this);
         }
     }
     
