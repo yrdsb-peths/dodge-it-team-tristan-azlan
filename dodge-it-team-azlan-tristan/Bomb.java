@@ -12,15 +12,6 @@ public class Bomb extends Actor
             resetBomb();
         }
         
-        if(isTouching(Hero.class)){
-            livesNum -= 1;
-            resetBomb();
-        }
-        
-        if(isTouching(Hero.class)){
-            livesNum -= 1;
-        }
-        
         if(livesNum == 0){
             GameOver gameOver = new GameOver();
             getWorld().addObject(gameOver, 300, 200);
